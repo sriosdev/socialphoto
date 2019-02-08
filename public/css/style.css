@@ -1,0 +1,25 @@
+form .avatar {
+    width: 55px;
+    margin-bottom: 15px;
+}
+
+.navbar .container-avatar {
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    border-radius: 900px;
+    overflow: hidden;
+}
+
+.navbar .container-avatar img {
+    display: block;
+	height: 100%;
+	width: 100%;
+    object-fit: cover;
+}
+
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+}
+
+
