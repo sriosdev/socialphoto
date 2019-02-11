@@ -3,7 +3,8 @@ form .avatar {
     margin-bottom: 15px;
 }
 
-.navbar .container-avatar {
+.navbar .container-avatar,
+.img-post .container-avatar {
     width: 35px;
     height: 35px;
     margin-left: 20px;
@@ -11,7 +12,8 @@ form .avatar {
     overflow: hidden;
 }
 
-.navbar .container-avatar img {
+.navbar .container-avatar img,
+.img-post .container-avatar img {
     display: block;
 	height: 100%;
 	width: 100%;
@@ -20,6 +22,74 @@ form .avatar {
 
 .navbar-brand {
     font-family: 'Pacifico', cursive;
+}
+
+.img-post {
+    margin-bottom: 35px;
+}
+
+.img-post .card-body {
+    padding: 0;
+}
+
+.img-post .container-avatar {
+    float: left;
+    margin-right: 15px;
+}
+
+.img-post .user-data {
+    font-weight: bold;
+    line-height: 34px;
+    color: slategray;
+}
+
+.img-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+}
+
+.img-post .img-description {
+    padding: 20px;
+    padding-top: 0;
+}
+
+.nickname {
+    font-weight: bold;
+}
+
+.img-like img,
+.img-comment img {
+    width: 30px;
+}
+
+.img-like {
+    float: left;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.img-comment {
+    float: left;
+    padding: 10px;
+}
+
+.btn-comment {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-comment:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.img-date {
+    color: #909090;
 }
 
 

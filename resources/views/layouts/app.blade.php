@@ -52,11 +52,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="" class="nav-link">Home</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="" class="nav-link">Upload photo</a>
+                                <a href="{{ route('photo.create') }}" class="nav-link">Upload photo</a>
                             </li>
 
                             <li class="nav-item">
