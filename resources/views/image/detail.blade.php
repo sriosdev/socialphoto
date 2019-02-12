@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-9 col-xl-12 ">
             @include('includes.message')
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7 col-xl-8">
                     <div class="card img-detail">
                         <div class="card-body img-detail-photo">
                             <div class="img-container">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-5 col-xl-4">
                     <div class="card img-detail">
                         <div class="card-header">
                             @if ($image->user->image)
@@ -42,7 +42,22 @@
                             <hr>
 
                             <div class="img-like">
-                                <img src="{{ asset('img/heart.svg') }}">
+                                <?php $user_like = false; ?>
+                                @foreach ($image->likes as $like)
+                                    @if ($like->user->id == Auth::user()->id)
+                                        <?php $user_like = true; ?>
+                                    @endif
+                                @endforeach
+
+                                <div class="btn-like">
+                                    @if ($user_like)
+                                <img src="{{ asset('img/heart-color.svg') }}" data-id="{{ $image->id }}" class="like">
+                                    @else
+                                        <img src="{{ asset('img/heart.svg') }}" data-id="{{ $image->id }}" class="dislike">
+                                    @endif
+
+                                    {{ count($image->likes) }}
+                                </div>
                             </div>
 
                             <div class="img-comment">

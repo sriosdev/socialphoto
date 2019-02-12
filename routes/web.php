@@ -28,3 +28,6 @@ Route::get('/photo/file/{filename}', 'ImageController@getImage')->name('photo.fi
 Route::get('/photo/detail/{id}', 'ImageController@detail')->name('photo.detail');
 Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
+Route::get('/like/{id}', 'LikeController@like')->name('like.save');
+Route::get('/dislike/{id}', 'LikeController@dislike')->name('like.delete');
+Route::get('/likes', 'LikeController@index')->name('likes');

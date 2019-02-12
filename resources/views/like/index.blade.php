@@ -6,13 +6,17 @@
         <div class="col-md-6">
             @include('includes.message')
 
-            @foreach ($images as $image)
-                @include('includes.post', ['image' => $image])
+            <h3 class="mb-4">Posts you've liked</h3>
+
+            @foreach ($likes as $like)
+                @include('includes.post', ['image' => $like->image])
             @endforeach
 
             <!-- Pagination -->
-            <div class="text-center">{{ $images->links() }}</div>
+            <div class="clearfix"></div>
+            {{ $likes->links() }}
         </div>
     </div>
 </div>
 @endsection
+

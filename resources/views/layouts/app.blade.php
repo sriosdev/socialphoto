@@ -11,11 +11,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -52,7 +56,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="{{ route('photo.create') }}" class="nav-link">Upload photo</a>
+                                <a href="{{ route('photo.create') }}" class="nav-link"><i class="fas fa-camera"></i> Upload photo</a>
                             </li>
 
                             <li class="nav-item">
@@ -66,17 +70,21 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="">
-                                        Profile
+                                        <i class="fas fa-user"></i> Profile
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('likes') }}">
+                                        <i class="fas fa-heart"></i> Liked photos
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('config') }}">
-                                        Configuration
+                                        <i class="fas fa-cog"></i> Account settings
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

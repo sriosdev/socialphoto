@@ -19,7 +19,7 @@ class users_seed extends Seeder
             'email' => 'sergio@asdf.com',
             'password' => Hash::make('asdf1234'),
             'created_at' => date('Y-m-d'),
-            'updated' => date('Y-m-d')
+            'updated_at' => date('Y-m-d')
         ]);
 
         DB::table('users')->insert([
@@ -30,7 +30,7 @@ class users_seed extends Seeder
             'email' => 'michael@asdf.com',
             'password' => Hash::make('asdf1234'),
             'created_at' => date('Y-m-d'),
-            'updated' => date('Y-m-d')
+            'updated_at' => date('Y-m-d')
         ]);
 
         DB::table('users')->insert([
@@ -41,7 +41,7 @@ class users_seed extends Seeder
             'email' => 'anne@asdf.com',
             'password' => Hash::make('asdf1234'),
             'created_at' => date('Y-m-d'),
-            'updated' => date('Y-m-d')
+            'updated_at' => date('Y-m-d')
         ]);
     }
 }
