@@ -26,3 +26,5 @@ Route::get('/upload-photo', 'ImageController@create')->name('photo.create');
 Route::post('/photo/save', 'ImageController@save')->name('photo.save');
 Route::get('/photo/file/{filename}', 'ImageController@getImage')->name('photo.file');
 Route::get('/photo/detail/{id}', 'ImageController@detail')->name('photo.detail');
+Route::post('/comment/save', 'CommentController@save')->name('comment.save');
+Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');

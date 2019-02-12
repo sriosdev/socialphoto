@@ -3,43 +3,89 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             @include('includes.message')
 
-            <div class="card img-post">
-                <div class="card-header">
-                    @if ($image->user->image)
-                        <div class="container-avatar">
-                            <img src="{{ route('user.avatar', ['filename' => $image->user->image]) }}" class="avatar">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card img-detail">
+                        <div class="card-body img-detail-photo">
+                            <div class="img-container">
+                                <img src="{{ route('photo.file', ['filename' => $image->image_path]) }}">
+                            </div>
                         </div>
-                    @endif
-
-                    <div class="user-data">
-                        {{ $image->user->nick }}
                     </div>
                 </div>
 
-                <div class="card-body">
-                    <div class="img-container">
-                        <img src="{{ route('photo.file', ['filename' => $image->image_path]) }}">
-                    </div>
+                <div class="col-md-4">
+                    <div class="card img-detail">
+                        <div class="card-header">
+                            @if ($image->user->image)
+                                <div class="container-avatar">
+                                    <img src="{{ route('user.avatar', ['filename' => $image->user->image]) }}" class="avatar">
+                                </div>
+                            @endif
 
-                    <div class="img-like">
-                        <img src="{{ asset('img/heart.svg') }}">
-                    </div>
+                            <div class="user-data">
+                                {{ $image->user->nick }}
+                            </div>
+                        </div>
 
-                    <div class="img-comment">
-                        <a href="" class="btn-comment">
-                            <img src="{{ asset('img/comment.svg') }}" alt="">
-                            {{ count($image->comments) }}
-                        </a>
-                    </div>
+                        <div class="card-body">
+                            <span class="clearfix"></span>
 
-                    <span class="clearfix"></span>
+                            <div class="img-description">
+                                {{ $image->description }} <br>
+                                <span class="img-date">{{ \FormatTime::LongTimeFilter($image->created_at) }}</span>
+                            </div>
 
-                    <div class="img-description">
-                        <span class="nickname">{{ $image->user->nick }} |</span>
-                        {{ $image->description }}
+                            <hr>
+
+                            <div class="img-like">
+                                <img src="{{ asset('img/heart.svg') }}">
+                            </div>
+
+                            <div class="img-comment">
+                                <a href="" class="btn-comment">
+                                    <img src="{{ asset('img/comment.svg') }}" alt="">
+                                    {{ count($image->comments) }}
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+
+                            @foreach ($image->comments as $comment)
+                                <div class="comment">
+                                    <span class="nickname">{{ $comment->user->nick }} |</span>
+                                    {{ $comment->content }}
+                                    <br>
+                                    <span class="img-date">{{ \FormatTime::LongTimeFilter($comment->created_at) }}</span>
+
+                                    @if (Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                        &middot;
+                                        <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="x-delete">Delete</a>
+                                    @endif
+                                </div>
+                            @endforeach
+
+                            <hr>
+
+                            <form action="{{ route('comment.save') }}" method="POST">
+                                @csrf
+
+                                <input type="hidden" name="image_id" value="{{ $image->id }}">
+                                <p>
+                                    <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : ''}}" name="content" required></textarea>
+
+                                    @if ($errors->has('content'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('content') }}</strong>
+                                        </span>
+                                    @endif
+                                </p>
+                                <button type="submit" class="btn btn-sm btn-primary">Post</button>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
