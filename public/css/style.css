@@ -12,13 +12,21 @@ form .avatar {
     overflow: hidden;
 }
 
+.user-info .container-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
 .navbar .container-avatar {
     margin-left: 20px;
 }
 
 .navbar .container-avatar img,
 .img-post .container-avatar img,
-.img-detail .container-avatar img {
+.img-detail .container-avatar img,
+.user-info .container-avatar img {
     display: block;
 	height: 100%;
 	width: 100%;
@@ -31,6 +39,7 @@ form .avatar {
 
 .img-post {
     margin-bottom: 35px;
+    box-shadow: 0 4px 8px 0 rgba(114, 114, 114, 0.2), 0 6px 20px 0 rgba(114, 114, 114, 0.19);
 }
 
 .img-post .card-body,
@@ -47,7 +56,10 @@ form .avatar {
 .img-post .user-data {
     font-weight: bold;
     line-height: 34px;
-    color: slategray;
+}
+
+.card-link {
+    color: black !important;
 }
 
 .img-container {
@@ -83,6 +95,11 @@ form .avatar {
     padding-left: 0;
 }
 
+.img-detail .card-header {
+    line-height: 34px;
+    font-weight: bold;
+}
+
 .img-comment {
     float: left;
     padding: 10px;
@@ -116,4 +133,25 @@ form .avatar {
     cursor: pointer;
 }
 
+.profile-post {
+    margin: 2% 2%;
+    background: #e0e0e0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
 
+.squared {
+    margin-top: 100%;
+}
+
+.profile-post img {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	height: 100%;
+	width: 100%;
+    object-fit: cover;
+}

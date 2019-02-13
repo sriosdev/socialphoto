@@ -1,19 +1,21 @@
 <div class="card img-post">
-    <div class="card-header">
-        @if ($image->user->image)
-            <div class="container-avatar">
-                <img src="{{ route('user.avatar', ['filename' => $image->user->image]) }}" class="avatar">
-            </div>
-        @else
-            <div class="container-avatar">
-                <img src="{{ asset('img/profile.svg') }}" class="avatar">
-            </div>
-        @endif
+    <a href="{{ route('user.profile', ['id' => $image->user->id]) }}" class="card-link">
+        <div class="card-header">
+            @if ($image->user->image)
+                <div class="container-avatar">
+                    <img src="{{ route('user.avatar', ['filename' => $image->user->image]) }}" class="avatar">
+                </div>
+            @else
+                <div class="container-avatar">
+                    <img src="{{ asset('img/profile.svg') }}" class="avatar">
+                </div>
+            @endif
 
-        <div class="user-data">
-            {{ $image->user->nick }}
+            <div class="user-data">
+                    {{ $image->user->nick }}
+            </div>
         </div>
-    </div>
+    </a>
 
     <div class="card-body">
         <a href="{{ route('photo.detail', ['id' => $image->id]) }}">
@@ -32,12 +34,12 @@
 
             <div class="btn-like">
                 @if ($user_like)
-            <img src="{{ asset('img/heart-color.svg') }}" data-id="{{ $image->id }}" class="like">
+                    <img src="{{ asset('img/heart-color.svg') }}" data-id="{{ $image->id }}" class="like">
                 @else
                     <img src="{{ asset('img/heart.svg') }}" data-id="{{ $image->id }}" class="dislike">
                 @endif
 
-                {{ count($image->likes) }}
+                <span>{{ count($image->likes) }}</span>
             </div>
         </div>
 

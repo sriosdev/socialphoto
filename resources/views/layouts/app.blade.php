@@ -56,7 +56,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="{{ route('photo.create') }}" class="nav-link"><i class="fas fa-camera"></i> Upload photo</a>
+                                <a href="{{ route('photo.create') }}" class="nav-link"><i class="fas fa-camera"></i> New photo</a>
                             </li>
 
                             <li class="nav-item">
@@ -69,7 +69,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
                                         <i class="fas fa-user"></i> Profile
                                     </a>
 

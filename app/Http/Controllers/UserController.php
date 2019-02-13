@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\User;
+use App\Image;
+use App\Like;
+use App\Comment;
 
 class UserController extends Controller
 {
@@ -46,6 +50,33 @@ class UserController extends Controller
 
         return redirect()->route('config')
                         ->with(['message' => 'Update complete']);
+    }
+
+
+    public function profile($id) {
+        $user = User::find($id);
+        $images = Image::where('user_id', $id)
+                            ->orderBy('id', 'desc')
+                            ->get();
+
+        // Counts user total likes
+        $likes_counter = 0;
+        foreach ($images as $image) {
+            $likes_counter += Like::where('image_id', $image->id)->count();
+        }
+
+        // Counts user total comments
+        $comments_counter = 0;
+        foreach ($images as $image) {
+            $comments_counter += Comment::where('image_id', $image->id)->count();
+        }
+
+        return view('user.profile', [
+            'user' => $user,
+            'images' => $images,
+            'likes' => $likes_counter,
+            'comments' => $comments_counter
+        ]);
     }
 
 

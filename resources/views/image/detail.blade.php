@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9 col-xl-12 ">
+        <div class="col-md-12 col-xl-10 ">
             @include('includes.message')
 
             <div class="row">
@@ -19,17 +19,23 @@
 
                 <div class="col-md-5 col-xl-4">
                     <div class="card img-detail">
-                        <div class="card-header">
-                            @if ($image->user->image)
-                                <div class="container-avatar">
-                                    <img src="{{ route('user.avatar', ['filename' => $image->user->image]) }}" class="avatar">
-                                </div>
-                            @endif
+                        <a href="{{ route('user.profile', ['id' => $image->user->id]) }}" class="card-link">
+                            <div class="card-header">
+                                @if ($image->user->image)
+                                    <div class="container-avatar">
+                                        <img src="{{ route('user.avatar', ['filename' => $image->user->image]) }}" class="avatar">
+                                    </div>
+                                @else
+                                    <div class="container-avatar">
+                                        <img src="{{ asset('img/profile.svg') }}" class="avatar">
+                                    </div>
+                                @endif
 
-                            <div class="user-data">
-                                {{ $image->user->nick }}
+                                <div class="user-data">
+                                    {{ $image->user->nick }}
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="card-body">
                             <span class="clearfix"></span>
