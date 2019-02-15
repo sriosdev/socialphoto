@@ -42,7 +42,43 @@
 
                             <div class="img-description">
                                 {{ $image->description }} <br>
-                                <span class="img-date">{{ \FormatTime::LongTimeFilter($image->created_at) }}</span>
+                                <span class="img-date">
+                                    {{ \FormatTime::LongTimeFilter($image->created_at) }}
+                                </span>
+                                @if (Auth::user() && Auth::user()->id == $image->user_id)
+                                    <span class="btn-actions">
+                                        <a href="{{ route ('photo.edit', ['id' => $image->id]) }}" class="post-edit"><i class="fas fa-pencil-alt"></i></a>
+                                        &nbsp;&nbsp;
+                                        <a href="" class="post-delete" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
+                                    </span>
+
+                                    <!-- Delete Modal -->
+                                    <div class="modal" id="modalDelete">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Are you sure?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    If you delete this post, your photo will no longer be available
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                                                    <a href="{{ route('photo.delete', ['id' => $image->id]) }}" class="post-delete">
+                                                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
 
                             <hr>
@@ -72,6 +108,8 @@
                                     {{ count($image->comments) }}
                                 </a>
                             </div>
+
+
                             <span class="clearfix"></span>
 
                             @foreach ($image->comments as $comment)

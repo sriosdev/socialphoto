@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Image;
+use App\Comment;
+use App\Like;
 
 class ImageController extends Controller
 {
@@ -45,6 +47,74 @@ class ImageController extends Controller
 
         return redirect()->route('home')
                             ->with(['message' => 'Your image has been successfully uploaded']);
+    }
+
+
+    public function delete($id) {
+        $user = \Auth::user();
+        $image = Image::find($id);
+        $comments = Comment::where('image_id', $id)->get();
+        $likes = Like::where('image_id', $id)->get();
+
+        if ($user && $image && $image->user->id == $user->id) {
+            // Comments
+            if ($comments && count($comments) > 0) {
+                foreach ($comments as $comment) {
+                    $comment->delete();
+                }
+            }
+
+            // Likes
+            if ($likes && count($likes) > 0) {
+                foreach ($likes as $like) {
+                    $like->delete();
+                }
+            }
+
+            // Image
+            Storage::disk('images')->delete($image->image_path);
+            $image->delete();
+
+            $message = ['message' => 'The image has been deleted successfully'];
+        }
+        else {
+            $message = ['message' => 'Couldn\'t delete image'];
+        }
+
+        return redirect()->route('user.profile', ['id' => $user->id])->with($message);
+    }
+
+
+    public function edit($id) {
+        $user = \Auth::user();
+        $image = Image::find($id);
+
+        if ($user && $image && $image->user->id == $user->id) {
+            return view('image.edit',
+                ['image' => $image]
+            );
+        }
+        else {
+            return redirect()->route('home');
+        }
+    }
+
+
+    public function update(Request $request) {
+        $validate = $this->validate($request, [
+            'description' => 'required',
+            'image_id' => 'required'
+        ]);
+
+        $image_id = $request->input('image_id');
+        $description = $request->input('description');
+
+        $image = Image::find($image_id);
+        $image->description = $description;
+        $image->update();
+
+        return redirect()->route('photo.detail', ['id' => $image_id])
+                            ->with(['message' => 'The photo description has been update successfully']);
     }
 
 

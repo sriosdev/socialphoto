@@ -155,3 +155,19 @@ form .avatar {
 	width: 100%;
     object-fit: cover;
 }
+
+.btn-actions {
+    float: right;
+}
+
+.post-delete, .post-edit {
+    color: #909090;
+}
+
+.post-delete:hover {
+    color: #d32e05;
+}
+
+.post-edit:hover {
+    color: black;
+}
