@@ -56,6 +56,9 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a href="{{ route('user.index') }}" class="nav-link"><i class="fas fa-users"></i></i> Search people</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('photo.create') }}" class="nav-link"><i class="fas fa-camera"></i> New photo</a>
                             </li>
 

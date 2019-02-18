@@ -51,4 +51,8 @@ window.addEventListener("load", function() {
 
     like()
     dislike()
+
+    $("#finder").submit(function(e) {
+        $(this).attr('action', `${url}people-list/${$('#finder #search').val()}`)
+    })
 })

@@ -1,3 +1,22 @@
+.btn {
+    background-color: #303030;
+    border-color: #303030;
+    color: white;
+}
+
+.btn:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+a { color: black; }
+
+a:hover {
+    color:slategray;
+    text-decoration: none;
+}
+
 form .avatar {
     width: 55px;
     margin-bottom: 15px;
@@ -26,7 +45,8 @@ form .avatar {
 .navbar .container-avatar img,
 .img-post .container-avatar img,
 .img-detail .container-avatar img,
-.user-info .container-avatar img {
+.user-info .container-avatar img,
+.people-list-card .container-avatar img {
     display: block;
 	height: 100%;
 	width: 100%;
@@ -170,4 +190,15 @@ form .avatar {
 
 .post-edit:hover {
     color: black;
+}
+
+.people-list-card {
+    box-shadow: 0 4px 8px 0 rgba(214, 214, 214, 0.2), 0 6px 20px 0 rgba(204, 204, 204, 0.19);
+}
+
+.people-list-card .container-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    overflow: hidden;
 }
