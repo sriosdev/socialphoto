@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class users_seed extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,33 +13,33 @@ class users_seed extends Seeder
     {
         DB::table('users')->insert([
             'role' => 'user',
-            'name' => 'Sergio',
-            'surname' => 'Ríos',
-            'nick' => 'srios',
-            'email' => 'sergio@asdf.com',
-            'password' => Hash::make('asdf1234'),
+            'name' => 'One',
+            'surname' => 'Example',
+            'nick' => 'example1',
+            'email' => 'one@example.com',
+            'password' => Hash::make('user'),
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ]);
 
         DB::table('users')->insert([
             'role' => 'user',
-            'name' => 'Michael',
-            'surname' => 'Smith',
-            'nick' => 'mike12',
-            'email' => 'michael@asdf.com',
-            'password' => Hash::make('asdf1234'),
+            'name' => 'Two',
+            'surname' => 'Example',
+            'nick' => 'example2',
+            'email' => 'two@example.com',
+            'password' => Hash::make('user'),
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ]);
 
         DB::table('users')->insert([
             'role' => 'user',
-            'name' => 'Anne',
-            'surname' => 'Richards',
-            'nick' => 'annerichards',
-            'email' => 'anne@asdf.com',
-            'password' => Hash::make('asdf1234'),
+            'name' => 'Three',
+            'surname' => 'Example',
+            'nick' => 'example3',
+            'email' => 'three@example.com',
+            'password' => Hash::make('user'),
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ]);
