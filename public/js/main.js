@@ -1,9 +1,8 @@
-var url = 'http://laravel.lab/'
+var url = 'http://localhost:8000/'
 
 window.addEventListener("load", function() {
 
     function like() {
-        console.log('like');
         $('.dislike').unbind('click').click(function() {
             $(this).addClass('like').removeClass('dislike')
             $(this).attr('src', `${url}img/heart-color.svg`)
@@ -16,7 +15,6 @@ window.addEventListener("load", function() {
                     if (response.like) {
                         var num_likes = parseInt(counter.text())
                         counter.text(++num_likes)
-                        console.log('You like a photo!')
                     }
                 }
             })
@@ -27,7 +25,6 @@ window.addEventListener("load", function() {
 
 
     function dislike() {
-        console.log('dislike');
         $('.like').unbind('click').click(function() {
             $(this).addClass('dislike').removeClass('like')
             $(this).attr('src', `${url}img/heart.svg`)
@@ -40,7 +37,6 @@ window.addEventListener("load", function() {
                     if (response.like) {
                         var num_likes = parseInt(counter.text())
                         counter.text(--num_likes)
-                        console.log('You remove your like :(')
                     }
                 }
             })

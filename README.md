@@ -15,6 +15,11 @@ DB_USERNAME=socialphoto
 DB_PASSWORD=secret
 ```
 
+### In file /public/js/main.js write your local URL:
+```
+var url = 'http://localhost:8000/'
+```
+
 ### Start dockers containers:
 ```
 docker-compose up -d --build
